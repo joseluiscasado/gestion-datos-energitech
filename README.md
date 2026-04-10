@@ -27,9 +27,9 @@ El equipo de gobierno del dato ha diseñado una estrategia del dato que incluye 
 
 Este repositorio contiene los siguientes proyectos de gobierno de datos:
 
-### [Proyecto 1: Procesamiento del Dato y Gestión de Requisitos](docs/proyecto-1-analisis-predictivo.md)
+### [Proyecto 1: Procesamiento del Dato y Gestión de Requisitos](docs/proyecto-1-procesamiento-gestion-requisitos.md)
 
 Implementación de un sistema de análisis predictivo basado en inteligencia artificial para la gestión de la demanda energética de EnergiTech. Este proyecto incluye la especificación completa de requisitos de datos, requisitos del proceso de negocio, y requisitos de calidad de datos.
 
 **Archivos:**
-- [docs/proyecto-1-analisis-predictivo.md](docs/proyecto-1-analisis-predictivo.md) - Documentación completa del proyecto
+- [docs/proyecto-1-analisis-predictivo.md](docs/proyecto-1-procesamiento-gestion-requisitos.md) - Documentación completa del proyecto
