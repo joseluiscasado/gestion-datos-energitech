@@ -182,7 +182,7 @@ Todos los datos tratados dentro de nuestro proyecto cumplirán otros aspectos ta
 
 **Política de Retención de Datos**
 
-- **Contador de medida: 24 meses.
-- **CRM: Indefinido.
-- **Datos climáticos: 24 meses.
-- **Logs de acceso: 24 meses.
+- **Contador de medida**: 24 meses.
+- **CRM**: Indefinido.
+- **Datos climáticos**: 24 meses.
+- **Logs de acceso**: 24 meses.
