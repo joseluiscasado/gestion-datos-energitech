@@ -72,13 +72,13 @@ Para cada dato se documenta:
 
 El diccionario de datos documenta cómo se implementan técnicamente cada uno de los datos (campos, tipos, restricciones, transformaciones).
 
-#### 2.3.1 Diccionario de Datos - Ejemplo: Consumo Cliente (D001)
+#### 2.3.1 Diccionario de Datos - Ejemplo: Consumo Cliente
 
 **Tabla: `consumo`**  
 
 | Campo | Tipo Dato | Nulabilidad | Restricciones | Descripción | Ejemplo | Transformaciones Aplicadas |
 |-------|----------|-----------|----------------|-----------|---------|---------------------------|
-| **meter_id** | STRING | NOT NULL | Clave primaria | Identificador único del contador (anonimizado con hash SHA-256) | a7f3c9e2d1b4 | Hash de ID original mediante SHA-256 |
+| **meter_id** | STRING | NOT NULL | Clave primaria | Identificador único del contador (anonimizado con hash SHA-256) | a7f3c9e2d1b4 | Hash de ID original |
 | **timestamp** | TIMESTAMP | NOT NULL | Índice temporal, precisión minuto | Marca temporal del registro con zona horaria UTC | 2024-04-10T14:30:00Z | Normalización a UTC desde zona local |
 | **consumption_kwh** | DECIMAL(18,4) | NOT NULL | ≥ 0, ≤ 50,000 | Consumo de energía en kilovatios-hora | 12.3456 | Redondeo a 4 decimales |
 | **voltage** | DECIMAL(6,2) | NULL | 180-250 V | Voltaje medido en vatios | 230.50 | Valores fuera de rango marcan como NULL |
@@ -94,7 +94,7 @@ El diccionario de datos documenta cómo se implementan técnicamente cada uno de
 4. `voltage` dentro de 180-250V; si fuera de rango = alerta
 5. `consumption_kwh` o `intensity` deben estar presentes (no ambos NULL)
 
-#### 2.3.2 Diccionario de Datos - Tabla Maestra: Consumo Anonimizado (D008)
+#### 2.3.2 Diccionario de Datos - Tabla Maestra: Consumo Anonimizado
 
 **Tabla**: `consumo_anonymized`  
 
@@ -119,6 +119,20 @@ La **trazabilidad** de los datos conecta los tres tipos de metadatos asegurando 
 ![Trazabilidad Metadatos - EnergiTech](../figuras/trazabilidad-metadatos.png)
 
 </div>
+
+La siguiente tabla establece la relación entre los tres tipos de metadatos para cada dato. Para cada activo de datos se vincula: su definición de negocio (glosario), su ubicación técnica (catálogo) y su implementación física (diccionario):
+
+| Dato | Metadato de Negocio (Glosario) | Metadato Técnico (Catálogo) | Metadato Operativo (Diccionario) |
+|---|---|---|---|
+| **Consumo Cliente** | Término: *Demanda Energética* — Cantidad de energía requerida por los clientes en un período determinado | Fuente: Contadores inteligentes — Almacenamiento: HDFS `/data/raw/energy/consumption` — Formato: CSV/Parquet, cada 15 min | Tabla: `consumo` — Campos: `meter_id` (STRING PK), `timestamp` (TIMESTAMP), `consumption_kwh` (DECIMAL), `voltage`, `intensity`, `status` |
+| **Producción Planta** | Término: *Producción Renovable* — Energía generada a partir de fuentes renovables (solar, eólica, hidráulica, biomasa) | Fuente: Sistemas SCADA — Almacenamiento: HDFS `/data/raw/energy/production` — Formato: Time-series JSON, cada 15 min | Tabla: `produccion` — Campos: `plant_id` (STRING PK), `timestamp` (TIMESTAMP), `production_kwh` (DECIMAL), `energy_type`, `equipment_temp` |
+| **Datos Cliente CRM** | Términos: *Cliente Residencial*, *Cliente VIP* — Clasificación de clientes según tipo de consumo y acuerdos contractuales | Fuente: CRM — Almacenamiento: PostgreSQL `public.customers` — Formato: Structured Data, batch diario | Tabla: `customers` — Campos: `customer_id` (STRING PK), `customer_type` (STRING), `location_lat` (DECIMAL), `location_lon` (DECIMAL), `contract_id` |
+| **Datos Climáticos** | Término: *Datos Climáticos* — Variables meteorológicas: temperatura, humedad, viento, radiación, precipitación | Fuente: APIs meteorológicas — Almacenamiento: HDFS `/data/raw/weather` — Formato: JSON, cada hora | Tabla: `weather` — Campos: `station_id` (STRING PK), `timestamp` (TIMESTAMP), `temperature` (DECIMAL), `humidity`, `wind_speed`, `solar_radiation` |
+| **Calendarios Laborales** | Término: *Calendarios Laborales* — Festivos, fines de semana y períodos vacacionales por zona | Fuente: RR.HH. + Config — Almacenamiento: PostgreSQL `public.calendars` — Formato: Structured Data, semestral | Tabla: `calendars` — Campos: `zone_id` (STRING PK), `date` (DATE PK), `day_type` (STRING), `is_holiday` (BOOLEAN) |
+| **Mantenimiento Programado** | Término: *Mantenimiento Programado* — Fechas y duración de mantenimiento planificado en plantas | Fuente: Sistema gestión mantenimiento — Almacenamiento: PostgreSQL `public.maintenance_schedule` — Formato: Structured Data | Tabla: `maintenance_schedule` — Campos: `maintenance_id` (STRING PK), `plant_id` (STRING FK), `start_date` (TIMESTAMP), `duration_hours` (DECIMAL) |
+| **Disponibilidad Equipos** | Término: *Disponibilidad de Equipos* — Estado y ubicación de equipos de reparación ante emergencias | Fuente: Sistema gestión mantenimiento — Almacenamiento: PostgreSQL — Formato: Structured Data, real-time | Tabla: `equipment_availability` — Campos: `equipment_id` (STRING PK), `status` (STRING), `type` (STRING), `location` (STRING) |
+| **Consumo Anonimizado** | Términos: *Anonimización*, *Demanda Energética* — Datos de consumo con ID transformado mediante hash criptográfico irreversible | Fuente: Transformación post-validación de D001 — Almacenamiento: HDFS `/data/processed/energy/consumption_anonymized` — Formato: Parquet | Tabla: `consumo_anonymized` — Campos: `customer_hash` (STRING PK), `consumption_period_date` (DATE), `total_daily_consumption_kwh`, `avg_hourly_load_kw`, `quality_score` |
+| **Predicción de Demanda** | Términos: *Análisis Predictivo*, *Ventana Temporal* — Previsión de demanda por ventana temporal (24h, 48h, 7d) | Fuente: Modelo IA/ML — Almacenamiento: PostgreSQL `public.demand_forecast` + Redis cache — Formato: JSON/Structured | Tabla: `demand_forecast` — Campos: `forecast_id` (STRING PK), `zone_id` (STRING FK), `forecast_window` (STRING), `predicted_kwh` (DECIMAL), `confidence` (DECIMAL) |
 
 ## 3. Tarea 2: Gestión del Ciclo de Vida del Dato
 
@@ -145,12 +159,45 @@ El ciclo de vida simplificado define cómo los datos se gestionan desde su orige
 
 **Objetivo**: Limpiar, validar, normalizar y enriquecer datos para uso analítico
 
-**Procesos:**
-1. **Validación de Datos** (agrupa reglas de negocio)
-2. **Limpieza de Datos** (corrección/eliminación de anomalías)
-3. **Normalización** (estandarización de formatos)
-4. **Enriquecimiento** (cálculos derivados, unión con dimensiones)
-5. **Anonimización** (aplicación de NePII protecciones)
+**Procesos y Controles de Validación Detallados:**
+
+**1. Validación de Datos (Reglas de Negocio)**
+
+| Regla | Dato Afectado | Condición de Validación | Acción si Falla | Severidad |
+|---|---|---|---|---|
+| VAL-01 | Consumo  | `consumption_kwh >= 0 AND consumption_kwh <= 50000` | Rechazar registro, registrar en log de errores | Crítica |
+| VAL-02 | Consumo | `timestamp` no nulo y sin saltos > 20 min respecto al anterior | Marcar como incompleto, notificar al Data Steward | Alta |
+| VAL-03 | Consumo | `voltage` entre 180V y 250V | Marcar como `status = 'ALERT'`, mantener registro | Media |
+| VAL-04 | Producción | `production_kwh >= 0 AND production_kwh <= capacidad_nominal_planta` | Rechazar registro, investigar anomalía | Crítica |
+| VAL-05 | CRM | `customer_type IN ('VIP', 'Estándar', 'Industrial')` | Rechazar, solicitar corrección al equipo de CRM | Alta |
+| VAL-06 | CRM | Coordenadas geográficas dentro del área de cobertura | Marcar para revisión manual | Media |
+| VAL-07 | Climáticos | `temperatura BETWEEN -20 AND 55` (°C) | Descartar medición, usar interpolación temporal | Alta |
+| VAL-08 | Todos | Registro no duplicado (clave primaria única por período) | Descartar duplicado, conservar el más reciente | Alta |
+
+**2. Limpieza de Datos (Corrección/Eliminación de Anomalías)**
+
+- Eliminación de registros que no superan las validaciones críticas (VAL-01, VAL-04)
+- Imputación de valores faltantes en series temporales mediante interpolación lineal (máximo 2 registros consecutivos; si hay más, se marca como dato no disponible)
+- Corrección de zonas horarias inconsistentes (normalización a UTC)
+
+**3. Normalización (Estandarización de Formatos)**
+
+- Unificación de formatos de timestamp a ISO 8601 (UTC)
+- Conversión de unidades: toda energía expresada en kWh, temperaturas en °C
+- Estandarización de códigos de zona geográfica según catálogo interno de EnergiTech
+
+**4. Enriquecimiento (Cálculos Derivados)**
+
+- Cálculo de `peak_load_kw` a partir de `intensity × voltage / 1000`
+- Cálculo de `availability_flag` como porcentaje de registros válidos por día
+- Cálculo de `quality_score` como producto de completitud × exactitud
+- Unión con dimensiones: tipo de cliente (desde CRM), zona climática (desde Calendarios)
+
+**5. Anonimización (Protección de Datos Personales)**
+
+- Aplicación de hash SHA-256 irreversible sobre identificadores de cliente
+- Supresión de campos con datos personales directos antes de paso a zona procesada
+- Verificación de que ningún dato en la capa procesada permite re-identificación
 
 
 #### **Fase 3: ALMACENAMIENTO (Persistencia del Dato)**
@@ -181,3 +228,43 @@ El ciclo de vida simplificado define cómo los datos se gestionan desde su orige
    - Reporte diario: Predicción vs. demanda real
    - Reporte semanal: Análisis de variaciones
    - Reporte mensual: Evaluación de calidad
+
+### Políticas de Gobierno del Dato por Fase del Ciclo de Vida
+
+Para regular qué se puede hacer y qué no se puede hacer con los datos en cada etapa, se definen las siguientes políticas:
+
+#### Políticas de Ingesta
+
+| ID | Política | Descripción |
+|---|---|---|
+| POL-ING-01 | Solo fuentes autorizadas | Únicamente se pueden ingestar datos de las fuentes registradas en el catálogo de datos. Cualquier nueva fuente requiere aprobación del Data Owner |
+| POL-ING-02 | Registro de origen | Todo dato ingestado debe llevar metadatos de trazabilidad: fuente, timestamp de recepción y lote de carga |
+| POL-ING-03 | Inmutabilidad de datos raw | Los datos recibidos en la raw zone no pueden ser modificados ni eliminados. Son la referencia de auditoría |
+| POL-ING-04 | Monitorización de SLA | Se debe alertar automáticamente si una fuente no entrega datos dentro del SLA establecido (ej: contadores > 30 min de retraso) |
+
+#### Políticas de Transformación
+
+| ID | Política | Descripción |
+|---|---|---|
+| POL-TRA-01 | Validación obligatoria | Ningún dato puede pasar a la capa procesada sin superar las reglas de validación definidas |
+| POL-TRA-02 | Trazabilidad de transformaciones | Toda transformación aplicada debe quedar registrada (qué regla, cuándo, resultado) para garantizar reproducibilidad |
+| POL-TRA-03 | Anonimización antes de procesado | Los datos con información personal deben anonimizarse antes de cualquier otro procesamiento analítico |
+| POL-TRA-04 | Prohibición de modificación manual | Las transformaciones deben ser automáticas y versionadas. No se permiten modificaciones manuales de datos en la capa de transformación |
+
+#### Políticas de Almacenamiento
+
+| ID | Política | Descripción |
+|---|---|---|
+| POL-ALM-01 | Cifrado obligatorio para PII | Todos los datos clasificados como PII.Sensitive deben almacenarse cifrados |
+| POL-ALM-02 | Retención según tipo de dato | Contadores y climáticos: 24 meses. CRM: mientras el cliente esté activo. Logs de acceso: 24 meses. Superado el período, los datos deben archivarse o eliminarse |
+| POL-ALM-03 | Segregación por sensibilidad | Los datos sensibles (PII) deben almacenarse en zonas separadas con controles de acceso diferenciados |
+| POL-ALM-04 | Copias de seguridad | Backup diario de la capa procesada y semanal de la raw zone, con verificación de integridad |
+
+#### Políticas de Explotación
+
+| ID | Política | Descripción |
+|---|---|---|
+| POL-EXP-01 | Acceso basado en roles | El acceso a datos en explotación se otorga según el rol: operadores (dashboards operativos), analistas (datos agregados), directivos (reportes ejecutivos) |
+| POL-EXP-02 | Prohibición de exportación de PII | No se permite la descarga ni exportación de datos con información personal identificable desde las herramientas de BI |
+| POL-EXP-03 | Registro de acceso | Todo acceso a datos en explotación queda registrado en el sistema de auditoría (quién, qué dato, cuándo, con qué propósito) |
+| POL-EXP-04 | Uso exclusivo para fines autorizados | Los datos solo pueden utilizarse para los fines descritos en el proceso de negocio. Cualquier uso secundario requiere aprobación del Data Owner y evaluación de impacto |

@@ -14,19 +14,33 @@ El proceso de negocio para la previsión de la demanda energética abarca desde 
 
 </div>
 
-- Extracción y Captura: El proceso comienza con la extracción de datos históricos de consumo desde el CRM y contadores de medida, datos de producción de las diferentes plantas de energía renovable, datos externos climatológicos, calendarios laborales en zonas de suministro, previsiones de mantenimiento en plantas, disponibilidad de equipos de reparación ante emergencias de producción.
+- **Extracción y Captura**: El proceso comienza con la extracción de datos históricos de consumo desde el CRM y contadores de medida, datos de producción de las diferentes plantas de energía renovable, datos externos climatológicos, calendarios laborales en zonas de suministro, previsiones de mantenimiento en plantas, disponibilidad de equipos de reparación ante emergencias de producción.
 
-- Validación: La empresa debe contar con sistemas automáticos supervisados para verificar que los registros obtenidos de las diferentes fuentes, sobre todo los esenciales, estén siempre disponibles y superen las reglas de calidad impuestas.
+- **Validación Inicial**: La empresa debe contar con sistemas automáticos supervisados para verificar que los registros obtenidos de las diferentes fuentes, sobre todo los esenciales, estén siempre disponibles y superen las reglas de calidad impuestas.
 
-- Tratamiento de datos: Normalización de fuentes, los datos de distintas regiones y formatos se estandarizan y adecúan al sistema, anonimización aplicando máscaras a los datos sensibles de los clientes y productores y limpieza de los datos erróneos.
+- **Tratamiento de datos**: Normalización de fuentes, los datos de distintas regiones y formatos se estandarizan y adecúan al sistema, anonimización aplicando máscaras a los datos sensibles de los clientes y productores y limpieza de los datos erróneos.
 
-- Entrenamiento y Ejecución del Modelo Predictivo: Lanzamiento del motor predictivo (IA) introduciendo los parámetros de ventana temporal requerida.
+- **Entrenamiento y Ejecución del Modelo Predictivo**: Lanzamiento del motor predictivo (IA) introduciendo los parámetros de ventana temporal requerida.
 
-- Validación: Comprobar si el resultado tiene sentido antes de su aplicación y comparación de previsión con demanda real para ajustar el modelo.
+- **Validación de Resultados**: Comprobar si el resultado tiene sentido antes de su aplicación y comparación de previsión con demanda real para ajustar el modelo.
 
-- Publicación de Previsión: El resultado se vuelca al sistema de gestión de red para evitar cortes de suministro.
+- **Publicación de Previsión**: El resultado se vuelca al sistema de gestión de red para evitar cortes de suministro.
 
-- Ajuste y retroalimentación: Comparación de previsión con demanda real para ajustar el modelo.
+- **Ajuste y retroalimentación**: Comparación de previsión con demanda real para ajustar el modelo.
+
+#### Datos de Entrada y Salida por Actividad del Proceso
+
+Para cada actividad del proceso de negocio se identifican los datos concretos que consume (entrada) y los que produce (salida):
+
+| Actividad | Datos de Entrada | Datos de Salida | 
+|---|---|---|
+| **Extracción y Captura** | Señales de contadores de medida (consumo kWh, voltaje, intensidad), datos SCADA de producción de plantas, datos CRM (clientes, contratos), lecturas de APIs meteorológicas (temperatura, viento, humedad), calendarios laborales, planes de mantenimiento, estado de equipos | Datos brutos en raw zone del Data Lake | 
+| **Validación Inicial** | Datos brutos ingestados (D001-D007 en raw zone) | Datos validados (registros que superan reglas de calidad) | 
+| **Tratamiento de datos** | Datos validados de la etapa anterior | Datos normalizados (formatos unificados, timestamps UTC, unidades estándar), datos anonimizados , datos limpios | 
+| **Entrenamiento y Ejecución del Modelo** | Datos procesados: consumo anonimizado, producción planta, datos climáticos, calendarios, mantenimiento, disponibilidad equipos, zona geográfica | Predicción de demanda, intervalo de confianza | 
+| **Validación de Resultados** | Predicción de demanda, datos históricos de demanda real | Predicción validada (aprobada/rechazada), informe de desviación predicción vs. realidad, métricas de error del modelo | 
+| **Publicación de Previsión** | Predicción validada | Previsión publicada en sistema de gestión de red, dashboards actualizados en BI, alertas a operadores si se prevén picos | 
+| **Ajuste y retroalimentación** | Demanda real registrada, predicción publicada, métricas de error acumuladas | Parámetros del modelo actualizados, dataset de entrenamiento enriquecido, informe de evolución de precisión | 
 
 En definitiva, se trata de un proceso cíclico, alimentado por diferentes fuentes de datos, los cuales deben ser tratados antes de su procesado y utilización. Una vez obtenidos estos resultados se realimentará el sistema para acelerar su aprendizaje.
 
