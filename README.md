@@ -36,7 +36,7 @@ Implementación de un sistema de análisis predictivo basado en inteligencia art
 
 ### [Proyecto 2: Gestión de Metadatos y Ciclo de Vida del Dato](proyectos/proyecto-2-metadatos-ciclo-vida.md)
 
-Creación de un marco integral de metadatos (glosario de términos, catálogo de datos, diccionario de datos) alineado con la norma UNE 0087, y definición del ciclo de vida completo del dato (Ingesta → Transformación → Almacenamiento → Explotación) con políticas de gobernanza y controles de validación. Incluye configuración de OpenMetadata on-premise, ejemplos de implementación técnica (Great Expectations, Spark, Airflow) y gestión de versionado.
+Creación de un marco integral de metadatos (glosario de términos, catálogo de datos, diccionario de datos) alineado con la norma UNE 0087, y definición del ciclo de vida completo del dato (Ingesta → Transformación → Almacenamiento → Explotación) con políticas de gobernanza y controles de validación. 
 
 **Archivos:**
 - [proyectos/proyecto-2-metadatos-ciclo-vida.md](proyectos/proyecto-2-metadatos-ciclo-vida.md) - Documentación completa del proyecto
