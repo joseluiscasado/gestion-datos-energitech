@@ -1,0 +1,66 @@
+parent,name*,displayName,description,synonyms,relatedTerms,references,tags,reviewers,owner,status
+,G01.Demanda Energética,Demanda Energética,Cantidad de energía requerida por los clientes en un período determinado,Consumo de energía; Demanda de potencia,,,PII.NonSensitive,,,Draft
+,G01.Producción Renovable,Producción Renovable,Energía generada a partir de fuentes renovables como solar eólica hidráulica y biomasa,Energía renovable; Generación verde,,,PII.NonSensitive,,,Draft
+,G01.Análisis Predictivo,Análisis Predictivo,Técnicas de IA para prever la demanda y producción de energía,Machine Learning; Predicción con IA,,,PII.NonSensitive,,,Draft
+,G01.Data Governance,Governo del Dato,Políticas y procesos para asegurar la calidad seguridad y cumplimiento normativo de los datos,Gobernanza de datos,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.Anonimización,Anonimización,Técnica criptográfica para proteger datos sensibles mediante hash irreversible,Enmascaramiento de datos; Privacidad de datos,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.Trazabilidad,Trazabilidad de Datos,Capacidad de registrar y auditar el acceso a datos críticos del sistema,Auditoría de datos; Trail de acceso,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.Validación de Datos,Validación de Datos,Proceso automático para verificar que los datos cumplen reglas de calidad establecidas,Control de calidad; Verificación de integridad,,,PII.Sensitive,,,Draft
+,G01.Normalización de Datos,Normalización de Datos,Proceso de estandarizar datos de diferentes fuentes a un formato único,Estandarización; Armonización,,,PII.Sensitive,,,Draft
+,G01.Limpieza de Datos,Limpieza de Datos,Eliminación de registros erróneos duplicados e inconsistentes,Data cleaning; Purificación de datos,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Data Lake,Data Lake,Repositorio centralizado que almacena datos históricos sin procesar de múltiples fuentes,Lago de datos; Raw data storage,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Data Warehouse,Data Warehouse,Base de datos optimizada que almacena datos procesados y estructurados para análisis,Almacén de datos; Repositorio analítico,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.HDFS,HDFS (Hadoop Distributed File System),Sistema de archivos distribuido para almacenar grandes volúmenes de datos,Hadoop; Sistema de archivos distribuido,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Cumplimiento GDPR,Cumplimiento GDPR,Adherencia a las regulaciones de protección de datos europeas,Regulación GDPR; Protección de datos,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.Disponibilidad Operativa,Disponibilidad Operativa,Garantía de que el sistema está disponible el 99% del tiempo especialmente en horas de máxima demanda,SLA; Uptime,,,PII.NonSensitive,,,Draft
+,G01.Ventana Temporal,Ventana Temporal,Período de tiempo para el cual se realizan predicciones (24h 48h o semanal),Horizonte de predicción; Período forecast,,,PII.NonSensitive,,,Draft
+,G01.Contador de Medida,Contador de Medida,Dispositivo que registra el consumo de energía de los clientes,Medidor inteligente; Smart meter,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Contador de Producción,Contador de Producción,Dispositivo que registra la producción de energía en plantas renovables,Medidor de generación; Sensor de producción,,,PII.NonSensitive;PII.Sensitive,,,Draft
+,G01.Sistema CRM,Sistema CRM,Base de datos con información de clientes contratos y clasificación (VIP/Estándar),Customer Relationship Management; Gestión de clientes,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Plantas Renovables,Plantas Renovables,Instalaciones generadoras de energía a partir de fuentes renovables (solar eólica hidráulica biomasa),Centrales renovables; Generadores renovables,,,PII.NonSensitive,,,Draft
+,G01.Datos Climáticos,Datos Climáticos,Variables meteorológicas como temperatura humedad velocidad del viento radiación solar y precipitación,Datos meteorológicos; Variables climáticas,,,PII.NonSensitive,,,Draft
+,G01.Calendarios Laborales,Calendarios Laborales,Información sobre festivos fines de semana y períodos vacacionales por zona de suministro,Calendario zona; Datos estacionales,,,PII.NonSensitive,,,Draft
+,G01.Mantenimiento Programado,Mantenimiento Programado,Fechas y duración de Mantenimiento planificado en plantas de producción,Paradas programadas; Mantenimiento preventivo,,,PII.NonSensitive,,,Draft
+,G01.Disponibilidad de Equipos,Disponibilidad de Equipos,Estado y ubicación de equipos de mantenimiento y reparación ante emergencias,Recursos de mantenimiento; Equipamiento disponible,,,PII.NonSensitive,,,Draft
+,G01.Sistema de Gestión de Red,Sistema de Gestión de Red,Plataforma que recibe y procesa las previsiones de demanda para optimizar distribución,Grid management; Network control system,,,PII.Sensitive;PersonalData.SpecialCategory,,,Draft
+,G01.Precisión de Predicción,Precisión de Predicción,Tolerable maximum error del 5% en las previsiones de demanda energética,Accuracy; Error tolerance,,,PII.NonSensitive,,,Draft
+,G01.Retención de Datos,Retención de Datos,Política que define por cuánto tiempo se conservan los datos según su tipo (24 meses para históricos),Data retention policy; Período de guarda,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.Integridad de Datos,Integridad de Datos,Garantía de que los datos son exactos completos y consistentes,Data quality; Exactitud,,,PII.Sensitive;PersonalData.SpecialCategory,,,Draft
+,G01.Cliente Residencial,Cliente Residencial,Persona natural que consume energía para uso personal en vivienda,Cliente doméstico; Usuario residencial,Cliente comercial; CRM; Ubicación cliente,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Cliente VIP,Cliente VIP,Cliente comercial o industrial con consumo superior a 100 MWh/año que requiere acuerdos especiales,Cliente premium; Cliente crítico,SLA especiales; Prioridad en suministro; Contrato Premium,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Consumo Mensual,Consumo Mensual,Energía total consumida por un cliente durante un mes natural,Consumo mensual agregado; Consumo horario; Contador de medida; Demanda Energética,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Ventana Temporal de Predicción,Ventana Temporal de Predicción,Período para el cual se realizan predicciones (24 horas 48 horas o una semana),Horizonte de pronóstico; Horizonte de predicción; Modelo predictivo; Análisis predictivo; Ventana Temporal,,,PII.NonSensitive,,,Draft
+,G01.Completitud,Completitud,Métrica de calidad que mide el porcentaje de registros válidos disponibles (umbral mínimo 95-99% según dato),Cobertura de datos; Volumen completo,Validación de Datos; Calidad de Datos; Unicidad; Exactitud,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Unicidad,Unicidad,Control de validación que garantiza ausencia de registros duplicados o datos repetidos innecesariamente,Deduplicación; Sin duplicados,Validación de Datos; Calidad de Datos; Completitud; Limpieza de Datos,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Consistencia,Consistencia,Garantía de que datos relacionados en diferentes sistemas u operaciones mantienen coherencia y alinhación,Coherencia de datos; Alineación,Validación de Datos; Calidad de Datos; Integridad de Datos,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Linaje de Datos,Linaje de Datos,Trazabilidad completa del origen transformación y destino de datos a través del ciclo de vida (data lineage),Rastreo de datos; Data lineage; Trazabilidad de transformaciones,Transformación de Datos; Trazabilidad; Metadatos Técnicos,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.Calidad de Datos,Calidad de Datos,Marco integral que evalúa datos según umbrales de completitud exactitud consistencia y temporalidad,Governance de datos; Estándares de calidad; Data Quality,Validación de Datos; Completitud; Exactitud; Consistencia,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.Clasificación de Datos,Clasificación de Datos,Categorización de datos según nivel de sensibilidad: público interno confidencial o secreto para determinar controles de acceso,Sensibilidad de datos; Nivel de sensibilidad; Categorización,Cumplimiento GDPR; Data Governance; Anonimización,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.Raw Zone,Raw Zone,Primera capa de almacenamiento en Data Lake con datos sin procesar inmediatamente capturados de fuentes sin transformación,Zona raw; Capa raw; Raw data zone,Data Lake; Almacenamiento de Datos; Ingesta de Datos; Processed Zone,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.Processed Zone,Processed Zone,Segunda capa de almacenamiento en Data Lake con datos validados limpios normalizados y enriquecidos listos para análisis,Zona procesada; Capa procesada; Processed data zone,Data Lake; Almacenamiento de Datos; Transformación de Datos; Raw Zone,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.RPB01,Requisito RPB01: Precisión en la predicción,Es aceptable una tolerancia de error máximo del 5% en la previsión de demanda,,,,PII.NonSensitive,,,Draft
+,G01.RPB02,Requisito RPB02: Marco Temporal,Debe ser capaz de realizar predicciones para 24 horas 48 horas y semanal,,,,PII.NonSensitive,,,Draft
+,G01.RPB03,Requisito RPB03: Posibilidad de Actualización,El modelo puede ser reajustado y actualizado diariamente con los últimos resultados y nuevos datos,,,,PII.NonSensitive,,,Draft
+,G01.RPB04,Requisito RPB04: Ámbito Geográfico,Debe ser válido para cubrir todo el ámbito geográfico de los clientes y proveedores de energía,,,,PII.NonSensitive,,,Draft
+,G01.RPB05,Requisito RPB05: Accesibilidad,El sistema debe ser accesible para operadores de red analistas de demanda y sistemas automáticos de balanceo,,,,PII.NonSensitive,,,Draft
+,G01.RPB06,Requisito RPB06: Disponibilidad,Es necesario ofrecer una elevada disponibilidad del 99% sobre todo durante horas de mayor demanda (06:00-22:00),,,,PII.NonSensitive,,,Draft
+,G01.RPB07,Requisito RPB07: Tiempo de Respuesta,Ejecución del modelo en menos de 5 minutos,,,,PII.NonSensitive,,,Draft
+,G01.RPB08,Requisito RPB08: Integración,Conexión automática con sistema de gestión de red,,,,PII.NonSensitive,,,Draft
+,G01.RPB09,Requisito RPB09: Flexibilidad,Posible adaptación a nuevos operadores de red y a nuevas demandas de clientes,,,,PII.NonSensitive,,,Draft
+,G01.RD01,Requisito RD01: Contadores de medida,Completitud de registros identificador único anonimizado sellos de tiempo precisos,,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.RD02,Requisito RD02: Contadores de producción,Completitud de registros identificador único por proveedor/planta sellos de tiempo precisos,,,,PII.NonSensitive;PII.Sensitive,,,Draft
+,G01.RD03,Requisito RD03: CRM,Clasificación actualizada mensualmente coordenadas precisas información de contrato vigente,,,,PersonalData.Personal;PII.Sensitive,,,Draft
+,G01.RD04,Requisito RD04: Plantas Renovables,Identificador único por planta separación de tipos de energía capacidad nominal documentada,,,,PII.NonSensitive,,,Draft
+,G01.RD05,Requisito RD05: Datos Climáticos,API confiable con SLA cobertura geográfica completa datos históricos de 2 años mínimo,,,,PII.NonSensitive,,,Draft
+,G01.RD06,Requisito RD06: Calendarios y Eventos,Calendarios por zona de suministro información de períodos vacacionales estacionales,,,,PII.NonSensitive,,,Draft
+,G01.RD07,Requisito RD07: Mantenimiento Programado,Calendarios por planta información de fechas y tiempo exacto de ejecución,,,,PII.NonSensitive,,,Draft
+,G01.RD08,Requisito RD08: Disponibilidad de Equipos,Calendarios de disponibilidad información de tiempo de respuesta y distancia a plantas,,,,PII.NonSensitive,,,Draft
+,G01.RCD01,Requisito RCD01: Completitud,Contadores 99% registros diarios CRM 100% clientes Plantas 99% mediciones Climáticos 95%,,,,PII.Sensitive;PersonalData.SpecialCategory,,,Draft
+,G01.RCD02,Requisito RCD02: Exactitud,Consumo ±2% Producción ±3% Coordenadas ±100m Temperaturas ±1°C,,,,PII.Sensitive;PersonalData.SpecialCategory,,,Draft
+,G01.RCD03,Requisito RCD03: Consistencia,Consumo ≤ Producción Datos CRM consistentes Ubicación coherente Permisos consistentes,,,,PII.Sensitive;PersonalData.SpecialCategory,,,Draft
+,G01.RCD04,Requisito RCD04: Exactitud de Marcas temporales,Medida max 30 min retraso Plantas max 15 min Climáticos max 1h Calendarios 3 meses anticipación,,,,PII.Sensitive;PersonalData.SpecialCategory,,,Draft
+,G01.RCD05,Requisito RCD05: Unicidad,Sin duplicados en medida identificadores únicos en tablas sin clientes duplicados en CRM,,,,PII.Sensitive;PersonalData.SpecialCategory,,,Draft
+,G01.RCG01,Requisito RCG01: Anonimización y Cumplimiento GDPR,Hash irreversible post-validación acceso solo a usuarios autorizados,,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.RCG02,Requisito RCG02: Detección y Resolución de Duplicados,Investigación mensual de duplicados en Contadores CRM y Plantas,,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.RCG03,Requisito RCG03: Trazabilidad de Acceso a Datos,Sistema centralizado de auditoría para Contadores y CRM,,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft
+,G01.RCG04,Requisito RCG04: Política de Retención de Datos,Contadores 24 meses CRM indefinido Climáticos 24 meses Logs 24 meses,,,,PersonalData.SpecialCategory;PII.Sensitive,,,Draft

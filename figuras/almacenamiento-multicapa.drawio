@@ -1,0 +1,43 @@
+<mxfile host="65bd71144e">
+    <diagram name="Estrategia Almacenamiento Multicapa" id="almacenamiento-multicapa">
+        <mxGraphModel dx="2176" dy="580" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1000" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="titulo" value="Estrategia de Almacenamiento Multicapa" style="text;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="40" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer1-box" value="1: RAW ZONE" style="rounded=0;strokeWidth=2;strokeColor=#1565C0;fillColor=#E3F2FD;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="50" y="100" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-down1" value="Transformación" style="endArrow=block;strokeWidth=2;strokeColor=#666666;html=1;align=center;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1" target="layer2-box" source="layer1-box">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="180" as="sourcePoint"/>
+                        <mxPoint x="500" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="layer2-box" value="2: PROCESSED ZONE" style="rounded=0;strokeWidth=2;strokeColor=#00796B;fillColor=#E0F2F1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="50" y="180" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-down2" value="Optimización" style="endArrow=block;strokeWidth=2;strokeColor=#666666;html=1;align=center;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1" target="layer3-box" source="layer2-box">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="320" as="sourcePoint"/>
+                        <mxPoint x="500" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="layer3-box" value="3: DATA WAREHOUSE" style="rounded=0;strokeWidth=2;strokeColor:#F57C00;fillColor=#FFF3E0;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="50" y="270" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-down3" value="Modelado" style="endArrow=block;strokeWidth=2;strokeColor=#666666;html=1;align=center;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" edge="1" target="layer4-box" source="layer3-box">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="490" as="sourcePoint"/>
+                        <mxPoint x="500" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="layer4-box" value="4: ANÁLISIS" style="rounded=0;strokeWidth=2;strokeColor:#6A1B9A;fillColor=#F3E5F5;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="50" y="360" width="200" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

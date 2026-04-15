@@ -27,9 +27,16 @@ El equipo de gobierno del dato ha diseñado una estrategia del dato que incluye 
 
 Este repositorio contiene los siguientes proyectos de gobierno de datos:
 
-### [Proyecto 1: Procesamiento del Dato y Gestión de Requisitos](docs/proyecto-1-procesamiento-gestion-requisitos.md)
+### [Proyecto 1: Procesamiento del Dato y Gestión de Requisitos](proyectos/proyecto-1-procesamiento-gestion-requisitos.md)
 
 Implementación de un sistema de análisis predictivo basado en inteligencia artificial para la gestión de la demanda energética de EnergiTech. Este proyecto incluye la especificación completa de requisitos de datos, requisitos del proceso de negocio, y requisitos de calidad de datos.
 
 **Archivos:**
-- [docs/proyecto-1-procesamiento-gestion-requisitos.md](docs/proyecto-1-procesamiento-gestion-requisitos.md) - Documentación completa del proyecto
+- [proyectos/proyecto-1-procesamiento-gestion-requisitos.md](proyectos/proyecto-1-procesamiento-gestion-requisitos.md) - Documentación completa del proyecto
+
+### [Proyecto 2: Gestión de Metadatos y Ciclo de Vida del Dato](proyectos/proyecto-2-metadatos-ciclo-vida.md)
+
+Creación de un marco integral de metadatos (glosario de términos, catálogo de datos, diccionario de datos) alineado con la norma UNE 0087, y definición del ciclo de vida completo del dato (Ingesta → Transformación → Almacenamiento → Explotación) con políticas de gobernanza y controles de validación. Incluye configuración de OpenMetadata on-premise, ejemplos de implementación técnica (Great Expectations, Spark, Airflow) y gestión de versionado.
+
+**Archivos:**
+- [proyectos/proyecto-2-metadatos-ciclo-vida.md](proyectos/proyecto-2-metadatos-ciclo-vida.md) - Documentación completa del proyecto
