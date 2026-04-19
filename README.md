@@ -41,7 +41,7 @@ Creación de un marco integral de metadatos (glosario de términos, catálogo de
 **Archivos:**
 - [proyectos/proyecto-2-metadatos-ciclo-vida.md](proyectos/proyecto-2-metadatos-ciclo-vida.md) - Documentación completa del proyecto
 
-### [Proyecto 3: Gestión de Datos Maestros y Arquitectura y deseño de Datos](proyectos/proyecto-3-datos-maestros-arquitectura.md)
+### [Proyecto 3: Gestión de Datos Maestros y Arquitectura y Diseño de Datos](proyectos/proyecto-3-datos-maestros-arquitectura.md)
 
 Diseño e implementación de un repositorio centralizado de datos maestros (Master Data Management - MDM) para resolver el problema de silos de datos y duplicación de registros de clientes. Este proyecto incluye el modelo de datos maestros para la entidad Cliente, arquitectura de integración para sincronización entre sistemas, y políticas de gobernanza para garantizar la consistencia de datos.
 

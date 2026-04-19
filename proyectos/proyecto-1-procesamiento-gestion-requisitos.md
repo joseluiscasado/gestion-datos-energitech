@@ -34,17 +34,15 @@ Para cada actividad del proceso de negocio se identifican los datos concretos qu
 
 | Actividad | Datos de Entrada | Datos de Salida | 
 |---|---|---|
-| **Extracción y Captura** | Señales de contadores de medida (consumo kWh, voltaje, intensidad), datos SCADA de producción de plantas, datos CRM (clientes, contratos), lecturas de APIs meteorológicas (temperatura, viento, humedad), calendarios laborales, planes de mantenimiento, estado de equipos | Datos brutos en raw zone del Data Lake | 
-| **Validación Inicial** | Datos brutos ingestados (D001-D007 en raw zone) | Datos validados (registros que superan reglas de calidad) | 
-| **Tratamiento de datos** | Datos validados de la etapa anterior | Datos normalizados (formatos unificados, timestamps UTC, unidades estándar), datos anonimizados , datos limpios | 
-| **Entrenamiento y Ejecución del Modelo** | Datos procesados: consumo anonimizado, producción planta, datos climáticos, calendarios, mantenimiento, disponibilidad equipos, zona geográfica | Predicción de demanda, intervalo de confianza | 
-| **Validación de Resultados** | Predicción de demanda, datos históricos de demanda real | Predicción validada (aprobada/rechazada), informe de desviación predicción vs. realidad, métricas de error del modelo | 
-| **Publicación de Previsión** | Predicción validada | Previsión publicada en sistema de gestión de red, dashboards actualizados en BI, alertas a operadores si se prevén picos | 
-| **Ajuste y retroalimentación** | Demanda real registrada, predicción publicada, métricas de error acumuladas | Parámetros del modelo actualizados, dataset de entrenamiento enriquecido, informe de evolución de precisión | 
+| **Extracción y Captura** | Señales de contadores de medida, datos SCADA de producción de plantas, datos CRM, lecturas de APIs meteorológicas, calendarios laborales, planes de mantenimiento, estado de equipos | Datos brutos en raw zone del Data Lake | 
+| **Validación Inicial** | Datos brutos ingestados | Datos validados | 
+| **Tratamiento de datos** | Datos validados | Datos normalizados, anonimizados y limpios | 
+| **Entrenamiento y Ejecución del Modelo** | Datos procesados y normalizados | Modelo de demanda | 
+| **Validación de Resultados** | Predicción de demanda y datos históricos de demanda real | Predicción validada (aprobada/rechazada), informe de desviación | 
+| **Publicación de Previsión** | Predicción validada | Previsión publicada en sistema de gestión de red, dashboards, alertas a operadores | 
+| **Ajuste y retroalimentación** | Demanda real registrada, predicción publicada | Parámetros del modelo actualizados, dataset de entrenamiento enriquecido | 
 
 En definitiva, se trata de un proceso cíclico, alimentado por diferentes fuentes de datos, los cuales deben ser tratados antes de su procesado y utilización. Una vez obtenidos estos resultados se realimentará el sistema para acelerar su aprendizaje.
-
-La labor de los actores de la empresa deberá ser la supervisión de la captura de datos, el tratamiento y limpieza de los mismos, revisión de los resultados del modelo predictivo y la publicación de los resultados para su uso y explotación.
 
 ## Identificación de Requisitos de Datos
 
@@ -59,7 +57,7 @@ El análisis predictivo de la producción y demanda de energía renovable en un 
 - **[RP03] Posibilidad de Actualización**: El modelo puede ser reajustado y actualizado diariamente con los últimos resultados y los nuevos datos.
 - **[RP04] Ámbito Geográfico**: Debe ser válido para cubrir todo el ámbito geográfico de los clientes y proveedores de energía.
 - **[RP05] Accesibilidad**: El sistema debe ser accesible tanto para los operadores de red, analistas de demanda, sistemas automáticos de balanceo.
-- **[RP06] Disponibilidad**: Es necesario ofrecer una elevada disponibilidad, un 99%, sobre todo durante horas de mayor demanda (06:00 - 22:00).
+- **[RP06] Disponibilidad**: Es necesario ofrecer una elevada disponibilidad, un 99%.
 - **[RP07] Tiempo de Respuesta**: Ejecución del modelo en menos de 5 minutos.
 - **[RP08] Integración**: Conexión automática con sistema de gestión de red.
 - **[RP09] Flexibilidad**: Posible adaptación a nuevos operadores de red y a nuevas demandas de clientes.
@@ -68,55 +66,27 @@ El análisis predictivo de la producción y demanda de energía renovable en un 
 
 Como en todo sistema basado en datos, la calidad de los mismos suele ser un factor clave en el éxito final del proceso. Según la fuente, el tipo de dato y sus características, aplicaremos los siguientes requisitos:
 
-| Fuente de Datos | Datos Requeridos | Formato | Frecuencia | Periodo Histórico | Seguridad | Almacenamiento |
-|---|---|---|---|---|---|---|
-| **Contadores de medida** | Consumo (kWh), voltaje, intensidad | CSV/JSON, agregación 15 min | 15 minutos | 24 meses | Anonimizar cliente | HDFS / DataLake |
-| **Contadores de producción** | Producción (kWh), voltaje, intensidad | CSV/JSON, agregación 15 min | 15 minutos | 24 meses | Anonimizar cliente | HDFS / DataLake |
-| **CRM** | ID Cliente, tipo (VIP/Estándar), ubicación, contrato | CSV/Base Datos | Diario | Activo | Encriptar datos sensibles | Data Warehouse |
-| **Plantas Renovables** | Producción (kWh), tipo energía (solar/eólica), temperatura equipos | Time-series, 15 min | 15 minutos | 24 meses | Acceso restringido | HDFS |
-| **Datos Climáticos Externos** | Temperatura, humedad, velocidad viento, radiación solar, precipitación | JSON API, horario | Horario | 24 meses | Público / Abierto | DataLake |
-| **Calendarios Laborales** | Festivos, fines de semana, periodos vacacionales por zona | CSV | Semestral | 12 meses adelante | Público | Data Warehouse |
-| **Mantenimiento Programado** | Fecha, planta, equipos afectados, duración prevista | CSV/Eventos | Ad-hoc | 3 meses | Interno | Data Warehouse |
-| **Disponibilidad de Equipos** | Estado (disponible/unavailable), tipo, ubicación | Real-time / API | Real-time | N/A | Interno | Data Warehouse |
+| Fuente de Datos | Datos Requeridos | Formato | Frecuencia | Periodo Histórico | 
+|---|---|---|---|---|
+| **Contadores de medida** | Consumo (kWh), voltaje, intensidad | CSV/JSON, agregación 15 min | 15 minutos | 24 meses |
+| **Contadores de producción** | Producción (kWh), voltaje, intensidad | CSV/JSON, agregación 15 min | 15 minutos | 24 meses |
+| **CRM** | ID Cliente, tipo (VIP/Estándar), ubicación, contrato | CSV/Base Datos | Diario | Activo | Encriptar datos sensibles |
+| **Plantas Renovables** | Producción (kWh), tipo energía (solar/eólica), temperatura equipos | Time-series, 15 min | 15 minutos | 24 meses |
+| **Datos Climáticos Externos** | Temperatura, humedad, velocidad viento, radiación solar, precipitación | JSON API, horario | Horario | 24 meses |
+| **Calendarios Laborales** | Festivos, fines de semana, periodos vacacionales por zona | CSV | Semestral | 12 meses adelante |
+| **Mantenimiento Programado** | Fecha, planta, equipos afectados, duración prevista | CSV/Eventos | Ad-hoc | 3 meses |
+| **Disponibilidad de Equipos** | Estado (disponible/unavailable), tipo, ubicación | Real-time / API | Real-time | N/A |
 
 **Requisitos Específicos de Fuentes:**
 
-- **[RD01] Contadores de medida**:
-  - Completitud: Registros para todos los clientes activos.
-  - Identificador único por cliente (anonimizado).
-  - Sellos de tiempo con precisión de minuto.
-
-- **[RD02] Contadores de producción**:
-  - Completitud: Registros para todos los proveedores activos.
-  - Identificador único por proveedor / planta.
-  - Sellos de tiempo con precisión de minuto.
-
-- **[RD03] CRM**:
-  - Clasificación de clientes actualizada mensualmente.
-  - Coordenadas geográficas precisas (máximo error 100 metros).
-  - Información de contrato con vigencia actualizada.
-
-- **[RD04] Plantas Renovables**:
-  - Identificador único por planta y por equipos generadores.
-  - Separación de tipos de energía (solar, eólica, hidráulica, biomasa)
-  - Capacidad nominal documentada.
-
-- **[RD05] Datos Climáticos**:
-  - API confiable con SLA de disponibilidad.
-  - Cobertura geográfica que cubra todas las zonas de suministro.
-  - Datos históricos con mínimo 2 años de antigüedad.
-
-- **[RD06] Calendarios y Eventos**:
-  - Calendarios por zona de suministro (pueden variar regional y localmente).
-  - Información de periodos vacacionales estacionales.
-
-- **[RD07] Mantenimiento Programado**:
-  - Calendarios por planta de ejecuciones de mantenimiento en planta.
-  - Información fechas y tiempo exacto de ejecución.
-
-- **[RD08] Disponibilidad de Equipos**:
-  - Calendarios de disponibilidad de equipos de mantenimiento.
-  - Información de tiempo de respuesta, distancia a cada planta de producción.
+- **[RD01] Contadores de medida:** completitud, identificador único, sello temporal.  
+- **[RD02] Contadores de producción:** completitud, identificador único, sello temporal.
+- **[RD03] CRM:** clasificación de clientes actualizada, coordenadas geográficas precisas, información de contrato actualizada.
+- **[RD04] Plantas Renovables:** identificador único, identificacion de tipo de energía, capacidad nominal.
+- **[RD05] Datos Climáticos:** alta disponibilidad, cobertura geográfica, datos históricos con mínimo 2 años.
+- **[RD06] Calendarios y Eventos:** calendarios por zona de suministro, información de periodos vacacionales.
+- **[RD07] Mantenimiento Programado:** calendarios por planta e información fechas y tiempo exacto de ejecución.
+- **[RD08] Disponibilidad de Equipos:** calendarios de disponibilidad de equipos de mantenimiento, tiempo de respuesta, distancia a cada planta de producción.
 
 ### Requisitos de Calidad de Datos
 
@@ -155,26 +125,7 @@ En función de la naturaleza, origen y criticidad de los datos, aplicaremos una 
 
 Todos los datos tratados dentro de nuestro proyecto cumplirán otros aspectos tanto legales como de calidad relacionados con el gobierno del dato, como:
 
-**[RCG01] Anonimización y Cumplimiento GDPR**
-
-- **Punto de Anonimización**: Inmediatamente después de validación inicial, antes de entrada a Data Lake.
-- **Técnica**: Hash irreversible.
-- **Datos Anonimizados**: Identificador de cliente.
-- **Acceso a Datos Reales**: Solo usuarios autorizados con registro.
-
-**[RCG02] Detección y Resolución de Duplicados**
-
-- **Entidades**: Contador de medida, Entidades CRM, Plantas renovables.
-- **Procedimiento**: Investigación mensual.
-
-**[RCG03] Trazabilidad de Acceso a Datos**
-
-- **Registro centralizado**: Sistema de auditoría para todos los accesos a datos.
-- **Datos Críticos**: Contador de medida, CRM.
-
+**[RCG01] Anonimización y Cumplimiento GDPR**  
+**[RCG02] Detección y Resolución de Duplicados**  
+**[RCG03] Trazabilidad de Acceso a Datos**  
 **[RCG04] Política de Retención de Datos**
-
-- **Contador de medida**: 24 meses.
-- **CRM**: Indefinido.
-- **Datos climáticos**: 24 meses.
-- **Logs de acceso**: 24 meses.

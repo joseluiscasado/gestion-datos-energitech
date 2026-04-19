@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Matriz de Trazabilidad" id="matriz-trazabilidad">
-        <mxGraphModel dx="946" dy="725" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" background="#ffffff" math="0" shadow="0">
+        <mxGraphModel dx="443" dy="580" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -28,10 +28,10 @@
                 <mxCell id="r1-col2" value="D003&#xa;(Datos Cliente CRM)" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#F3E5F5;strokeColor=#7B1FA2;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="290" y="140" width="220" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="r1-col3" value="PostgreSQL DW&#xa;public.customers" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#E8F5E9;strokeColor=#388E3C;rounded=1;" parent="1" vertex="1">
+                <mxCell id="r1-col3" value="PostgreSQL DW&#xa;public.clientes" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#E8F5E9;strokeColor=#388E3C;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="530" y="140" width="220" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="r1-col4" value="public.customers" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
+                <mxCell id="r1-col4" value="public.clientes" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="770" y="140" width="220" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="r1-col5" value="Jefe CRM / DBA DW" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FCE4EC;strokeColor=#C2185B;rounded=1;" parent="1" vertex="1">
@@ -43,10 +43,10 @@
                 <mxCell id="r2-col2" value="D001, D008" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#F3E5F5;strokeColor=#7B1FA2;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="290" y="220" width="220" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="r2-col3" value="HDFS Data Lake" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#E8F5E9;strokeColor=#388E3C;rounded=1;" parent="1" vertex="1">
+                <mxCell id="r2-col3" value="HDFS Lago de Datos" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#E8F5E9;strokeColor=#388E3C;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="530" y="220" width="220" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="r2-col4" value="/data/raw/energy/&#xa;consumption" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
+                <mxCell id="r2-col4" value="/datos/brutos/energia/&#xa;consumo" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="770" y="220" width="220" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="r2-col5" value="Jefe Ops Red /&#xa;Ing. Infrastructure" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FCE4EC;strokeColor=#C2185B;rounded=1;" parent="1" vertex="1">
@@ -61,7 +61,7 @@
                 <mxCell id="r3-col3" value="PostgreSQL DW +&#xa;Redis" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#E8F5E9;strokeColor=#388E3C;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="530" y="300" width="220" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="r3-col4" value="public.demand_&#xa;forecast" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
+                <mxCell id="r3-col4" value="public.prediccion_&#xa;demanda" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="770" y="300" width="220" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="r3-col5" value="Jefe IA/ML /&#xa;Ing. IA/ML" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FCE4EC;strokeColor:#C2185B;rounded=1;" parent="1" vertex="1">
@@ -76,7 +76,7 @@
                 <mxCell id="r4-col3" value="PostgreSQL DW" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#E8F5E9;strokeColor=#388E3C;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="530" y="380" width="220" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="r4-col4" value="public.data_&#xa;validation_log" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
+                <mxCell id="r4-col4" value="public.registro_&#xa;validacion_datos" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="770" y="380" width="220" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="r4-col5" value="Jefe Gobierno Dato /&#xa;Analista Calidad" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FCE4EC;strokeColor:#C2185B;rounded=1;" parent="1" vertex="1">
@@ -88,10 +88,10 @@
                 <mxCell id="r5-col2" value="D008" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#F3E5F5;strokeColor=#7B1FA2;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="290" y="460" width="220" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="r5-col3" value="HDFS Data Lake" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#E8F5E9;strokeColor=#388E3C;rounded=1;" parent="1" vertex="1">
+                <mxCell id="r5-col3" value="HDFS Lago de Datos" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#E8F5E9;strokeColor=#388E3C;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="530" y="460" width="220" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="r5-col4" value="/data/processed/&#xa;energy/consumption_&#xa;anonymized" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
+                <mxCell id="r5-col4" value="/datos/procesados/energia/&#xa;consumo_anonimizado" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FFF3E0;strokeColor=#F57C00;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="770" y="460" width="220" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="r5-col5" value="Jefe Gobierno Dato /&#xa;Ing. Security" style="text;fontSize=11;align=center;verticalAlign=middle;fillColor=#FCE4EC;strokeColor=#C2185B;rounded=1;" parent="1" vertex="1">

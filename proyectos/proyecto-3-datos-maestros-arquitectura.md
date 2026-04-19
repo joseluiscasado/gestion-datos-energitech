@@ -87,9 +87,9 @@ El modelo maestro de Cliente incluye los siguientes atributos, organizados por c
 
 Para identificar automáticamente si dos registros corresponden al mismo cliente (matching), se aplican las siguientes reglas:
 
-**Regla M-D1: Documento de Identidad Nacional (CONFIANZA: 100%)**
-**Regla M-D2: Email Único Validado (CONFIANZA: 95%)**
-**Regla M-P1: Nombre + Dirección Similar (CONFIANZA: 75-85%)**
+**Regla M1: Documento de Identidad Nacional (CONFIANZA: 100%)**  
+**Regla M2: Email Único Validado (CONFIANZA: 95%)**  
+**Regla M3: Nombre + Dirección Similar (CONFIANZA: 75-85%)**
 
 ---
 
@@ -137,6 +137,9 @@ La arquitectura propuesta integra los sistemas operacionales de EnergiTech con e
 ---
 
 ### 4.3 Políticas de Gestión de Datos Maestros
+
+Con las siguientes políticas de gestión de datos maestros conseguiremos controlar toda operación sobre los mismos y mantener su información histórica y consistencia.
+
 
 | ID | Política | Descripción |
 |----|----------|-----------|
