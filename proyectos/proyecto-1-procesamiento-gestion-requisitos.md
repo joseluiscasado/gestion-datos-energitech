@@ -6,7 +6,7 @@ EnergiTech quiere implementar un nuevo sistema de análisis predictivo basado en
 
 ## Descripción del Proceso de Negocio que implica el cálculo de la previsión de la demanda energética
 
-El proceso de negocio para la previsión de la demanda energética abarca desde la captura de señales en campo de las diferentes fuentes de energía renovable, datos de agentes externos que afectan tanto a la producción como a la demanda de energía, tratamiento de los datos para su limpieza, filtrado y validación, desarrollo de modelos de datos basados en IA para  la toma de decisiones y validación de resultados. A continuación, se detalla el modelo de proceso y las instrucciones de procesamiento:
+El proceso de negocio de previsión de la demanda energética es un ciclo continuo diseñado para optimizar la gestión de la producción y distribución de energía renovable. Este proceso busca anticipar la demanda de energía con precisión para garantizar la disponibilidad de suministro, evitar cortes de servicio y optimizar la operación de las plantas de energía, especialmente para clientes críticos. El proceso integra información de múltiples fuentes (consumo histórico, producción actual, factores climatológicos y eventos externos) y genera predicciones que alimentan las decisiones operativas en tiempo real.
 
 <div align="center">
 
@@ -14,35 +14,19 @@ El proceso de negocio para la previsión de la demanda energética abarca desde 
 
 </div>
 
-- **Extracción y Captura**: El proceso comienza con la extracción de datos históricos de consumo desde el CRM y contadores de medida, datos de producción de las diferentes plantas de energía renovable, datos externos climatológicos, calendarios laborales en zonas de suministro, previsiones de mantenimiento en plantas, disponibilidad de equipos de reparación ante emergencias de producción.
+Las principales fases del proceso de negocio son:
 
-- **Validación Inicial**: La empresa debe contar con sistemas automáticos supervisados para verificar que los registros obtenidos de las diferentes fuentes, sobre todo los esenciales, estén siempre disponibles y superen las reglas de calidad impuestas.
+- **Recopilación de Información**: El proceso inicia mediante la recopilación integral de información de múltiples fuentes relevantes para la predicción: datos históricos de consumo de clientes, producción actual de plantas renovables, condiciones climáticas, calendarios de eventos y planes de mantenimiento.
 
-- **Tratamiento de datos**: Normalización de fuentes, los datos de distintas regiones y formatos se estandarizan y adecúan al sistema, anonimización aplicando máscaras a los datos sensibles de los clientes y productores y limpieza de los datos erróneos.
+- **Análisis y Validación**: La información recopilada se valida y se somete a análisis para asegurar su confiabilidad y consistencia. Se aplican reglas de negocio para identificar anomalías o inconsistencias que puedan afectar la calidad de las predicciones.
 
-- **Entrenamiento y Ejecución del Modelo Predictivo**: Lanzamiento del motor predictivo (IA) introduciendo los parámetros de ventana temporal requerida.
+- **Generación de Predicción**: Se genera una previsión de demanda para los periodos requeridos (24 horas, 48 horas y semanal).
 
-- **Validación de Resultados**: Comprobar si el resultado tiene sentido antes de su aplicación y comparación de previsión con demanda real para ajustar el modelo.
+- **Revisión y Aprobación**: Los resultados de la predicción se someten a validación de negocio para verificar su coherencia antes de su aplicación operativa.
 
-- **Publicación de Previsión**: El resultado se vuelca al sistema de gestión de red para evitar cortes de suministro.
+- **Difusión y Operación**: La predicción aprobada se comunica al sistema de gestión de red, analistas de demanda y sistemas automáticos de balanceo para su implementación operativa.
 
-- **Ajuste y retroalimentación**: Comparación de previsión con demanda real para ajustar el modelo.
-
-#### Datos de Entrada y Salida por Actividad del Proceso
-
-Para cada actividad del proceso de negocio se identifican los datos concretos que consume (entrada) y los que produce (salida):
-
-| Actividad | Datos de Entrada | Datos de Salida | 
-|---|---|---|
-| **Extracción y Captura** | Señales de contadores de medida, datos SCADA de producción de plantas, datos CRM, lecturas de APIs meteorológicas, calendarios laborales, planes de mantenimiento, estado de equipos | Datos brutos en raw zone del Data Lake | 
-| **Validación Inicial** | Datos brutos ingestados | Datos validados | 
-| **Tratamiento de datos** | Datos validados | Datos normalizados, anonimizados y limpios | 
-| **Entrenamiento y Ejecución del Modelo** | Datos procesados y normalizados | Modelo de demanda | 
-| **Validación de Resultados** | Predicción de demanda y datos históricos de demanda real | Predicción validada (aprobada/rechazada), informe de desviación | 
-| **Publicación de Previsión** | Predicción validada | Previsión publicada en sistema de gestión de red, dashboards, alertas a operadores | 
-| **Ajuste y retroalimentación** | Demanda real registrada, predicción publicada | Parámetros del modelo actualizados, dataset de entrenamiento enriquecido | 
-
-En definitiva, se trata de un proceso cíclico, alimentado por diferentes fuentes de datos, los cuales deben ser tratados antes de su procesado y utilización. Una vez obtenidos estos resultados se realimentará el sistema para acelerar su aprendizaje.
+- **Seguimiento y Mejora Continua**: Se monitorea el comportamiento de las predicciones respecto a la demanda real, y los aprendizajes se utilizan para mejorar continuamente el modelo predictivo.
 
 ## Identificación de Requisitos de Datos
 

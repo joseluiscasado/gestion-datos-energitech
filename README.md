@@ -47,3 +47,10 @@ Diseño e implementación de un repositorio centralizado de datos maestros (Mast
 
 **Archivos:**
 - [proyectos/proyecto-3-datos-maestros-arquitectura.md](proyectos/proyecto-3-datos-maestros-arquitectura.md) - Documentación completa del proyecto
+
+### [Proyecto 4: Medición de la Calidad del Dato](proyectos/proyecto-4-calidad-del-dato.md)
+
+Definición de un modelo de calidad del dato alineado con la norma UNE 0081, con selección y justificación de al menos tres características de calidad (Completitud, Exactitud, Actualidad, Consistencia o Unicidad), métodos de medición con fórmulas, procedimientos y umbrales acordes al apetito de riesgo de EnergiTech.
+
+**Archivos:**
+- [proyectos/proyecto-4-calidad-del-dato.md](proyectos/proyecto-4-calidad-del-dato.md) - Documentación completa del proyecto
