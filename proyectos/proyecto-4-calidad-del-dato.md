@@ -8,9 +8,9 @@ Intentaremos resolver esta situación, desarrollando un **modelo de calidad del 
 
 ---
 
-## 2. Tarea 1: Modelo de Calidad del Dato
+## 2. Modelo de Calidad del Dato
 
-### 2.1 Selección y Justificación de las Características de Calidad
+### 2.1 Características de Calidad
 
 De entre las características definidas en **UNE 0081**, se han seleccionado **tres** como las más relevantes para el proceso de predicción de demanda energética de EnergiTech, basandonos en los requisitos de negocio planteados en proyectos anteriores.
 
@@ -24,49 +24,7 @@ De entre las características definidas en **UNE 0081**, se han seleccionado **t
 
 ---
 
-### 2.2 Modelo de Puntuación Agregada de Calidad
-
-Para disponer de una visión consolidada del estado de la calidad, se define un **modelo de puntuación** que agrega las tres características en un indicador único por fuente de datos.
-
-#### 2.2.1 Metodología de Puntuación
-
-Cada característica se evalúa y normaliza a una escala **0-1** en función del umbral alcanzado:
-
-| Nivel Alcanzado | Puntuación Normalizada |
-|-----------------|----------------------|
-| Óptimo | 1.00 |
-| Aceptable | 0.75 |
-| Crítico | 0.25 |
-| Sin datos / No medible | 0.00 |
-
-La **Puntuación de Calidad (PQ)** de cada dataset se calcula como una media ponderada de las tres características.
-
-#### 2.2.2 Pesos por Dataset
-
-Los pesos reflejan la importancia relativa de cada característica según el tipo de dato:
-
-| Dataset | Completitud | Exactitud | Actualidad |
-|---------|:-:|:-:|:-:|
-| **D001** Consumo Cliente | 0.35 | 0.35 | 0.30 |
-| **D002** Producción Planta | 0.35 | 0.35 | 0.30 |
-| **D003** Datos Cliente CRM | 0.50 | 0.30 | 0.20 |
-| **D004** Datos Climáticos | 0.35 | 0.35 | 0.30 |
-| **D005** Calendarios Laborales | 0.50 | 0.30 | 0.20 |
-| **D006** Mantenimiento Programado | 0.50 | 0.25 | 0.25 |
-| **D007** Disponibilidad Equipos | 0.30 | 0.20 | 0.50 |
-| **D009** Predicción de Demanda | 0.20 | 0.50 | 0.30 |
-
-#### 2.2.3 Interpretación de la Puntuación
-
-| Rango PQ | Estado | Acción |
-|----------|--------|-------|
-| PQ ≥ 0.95 | **Óptimo** | Sin acción. Monitorización periódica. |
-| 0.85 ≤ PQ < 0.95 | **Aceptable** | Investigar causa raíz. Monitorización reforzada. |
-| PQ < 0.85 | **Crítico** | Bloquear pipeline. Escalar al responsable del dato. Activar proceso de incidencia. |
-
----
-
-## 3. Tarea 2: Métodos de Medición de Calidad del Dato
+## 3. Métodos de Medición de Calidad del Dato
 
 Para cada característica seleccionada se definen las **medidas de calidad**, el **procedimiento de cálculo**, la **frecuencia de medición** y los **umbrales** acordes al apetito de riesgo de EnergiTech.
 
@@ -179,8 +137,6 @@ La **Actualidad** (UNE 0081 / ISO 25012) mide el grado en que los datos están d
 ---
 
 ## 4. Resumen: Cuadro de Mandos de Calidad del Dato
-
-### 4.1 Tabla Consolidada de Medidas
 
 La siguiente tabla resume todas las medidas definidas, su relación con las características UNE 0081 y con los requisitos del proceso de negocio:
 
