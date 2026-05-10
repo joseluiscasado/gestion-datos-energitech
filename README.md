@@ -54,3 +54,12 @@ Definición de un modelo de calidad del dato alineado con la norma UNE 0081, con
 
 **Archivos:**
 - [proyectos/proyecto-4-calidad-del-dato.md](proyectos/proyecto-4-calidad-del-dato.md) - Documentación completa del proyecto
+
+### [Proyecto 5: Control y Monitorización de Calidad del Dato](proyectos/proyecto-5-control-monitorizacion-calidad.md)
+
+Establecimiento de un entorno operativo de monitorización continua de la calidad del dato. Este proyecto implementa procedimientos estandarizados de medición para cada característica de calidad definida anteriormente, crea un cuadro de mandos integral para visualizar el estado de calidad en tiempo real, e integra herramientas como OpenMetadata para enriquecer el catálogo de datos con métricas de calidad y linaje.
+
+**Archivos:**
+- [proyectos/proyecto-5-control-monitorizacion-calidad.md](proyectos/proyecto-5-control-monitorizacion-calidad.md) - Documentación completa del proyecto
+
+
