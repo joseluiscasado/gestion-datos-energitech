@@ -62,4 +62,9 @@ Establecimiento de un entorno operativo de monitorización continua de la calida
 **Archivos:**
 - [proyectos/proyecto-5-control-monitorizacion-calidad.md](proyectos/proyecto-5-control-monitorizacion-calidad.md) - Documentación completa del proyecto
 
+### [Proyecto 6: Evaluación de Madurez Organizacional (Sesión 14)](proyectos/proyecto-6-evaluacion-madurez.md)
 
+Evaluación del nivel de madurez organizacional que EnergiTech ha alcanzado en su iniciativa de gobierno de datos, utilizando como marco de referencia la especificación **UNE 0080**. Incluye un análisis exhaustivo exploratorio de evidencias en diseño, implantación y ejecución de procesos de gobierno, gestión y calidad del dato, derivando el nivel de madurez alcanzado, y propone un plan de mejora.
+
+**Archivos:**
+- [proyectos/proyecto-6-evaluacion-madurez.md](proyectos/proyecto-6-evaluacion-madurez.md) - Documentación completa del proyecto

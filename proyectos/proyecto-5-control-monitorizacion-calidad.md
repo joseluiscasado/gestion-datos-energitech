@@ -199,6 +199,18 @@ Definiremos diferentres Dashboards en función del rol al que van destinados los
 | **Tendencia 30 días** | Evolución del score de calidad global últimos 30 días; mostrar si mejora o degrada | Diaria |
 | **Matriz Riesgo-Impacto** | Datasets mapeados por: Riesgo de Calidad (bajo/alto) vs. Impacto Negocio (bajo/alto) | Semanal |
 
+**Artefacto Disponible:** 
+[Ver Dashboard en tiempo real](../auxiliares/dashboard/dashboard-calidad-datos.html)
+
+<div align="center">
+
+![Dashboard de Tests de Calidad](../figuras/dashboard-calidad.png)
+
+</div>
+
+**Descripción:** Este dashboard proporciona la visión ejecutiva de 
+calidad de datos con indicadores de estado, datasets en riesgo, 
+incidencias abiertas y tendencias. Actualización: cada 6 horas.
 
 ---
 
@@ -215,6 +227,20 @@ Definiremos diferentres Dashboards en función del rol al que van destinados los
 | **Estado de Jobs** | Última ejecución de cada procedimiento (PRC-COM-01, etc.); mostrar: Hora inicio, duración, estatus (OK/FAIL), mensajes error | En tiempo real |
 | **Causas Raíz de Alertas** | Categorización de incidencias: Fuente mala / Error proceso / Retraso transmisión / Otra; conteo por categoría | Diaria |
 
+**Artefacto Disponible:**
+[Ver Tests de Calidad Ejecutados](../auxiliares/dashboard/tests-openmetadata.html)
+
+<div align="center">
+
+![Dashboard de Tests ejecutados](../figuras/dashboard-test.png)
+
+</div>
+
+**Descripción:** Informe detallado de todos los tests de calidad 
+ejecutados por cada dataset (D001, D002, D003, D004). Muestra:
+- Tasa de éxito por dataset
+- Detalle de cada test (nombre, resultado, timestamp)
+
 ---
 
 #### 3.2.3 Dashboard 3: Integración con OpenMetadata
@@ -229,3 +255,46 @@ Definiremos diferentres Dashboards en función del rol al que van destinados los
 | **Matriz de Dependencias** | Filas=Datasets consumidores; Columnas=Datasets proveedores; celda=severidad de impacto si proveedor falla | Mensual |
 
 
+**Otros Artefactos Disponibles:**
+
+Integración nativa con **OpenMetadata 1.4.3** para enriquecimiento automático de metadatos y trazabilidad de calidad:
+
+- **Test de Calidad del Dato**
+
+Suite de pruebas automatizadas definidas en OpenMetadata que validan características de completitud, exactitud y actualidad.
+
+<div align="center">
+
+![Dashboard de Tests calidad openmetadata](../figuras/openmetadata_data_quality.png)
+
+</div>
+
+- **Análisis de Datos (Column Profiling)**
+
+Perfilado automático de columnas que identifica distribuciones, valores outliers, cardinalidad y patrones de datos. Facilita detección de anomalías y cambios en características estadísticas de datasets.
+
+<div align="center">
+
+![Dashboard de analisis datos openmetadata](../figuras/openmetadata_column_profile.png)
+
+</div>
+
+- **Linaje de Datos (Data Lineage)**
+
+Trazabilidad completa del flujo de datos desde fuentes originales hasta consumidores finales. Permite visualizar dependencias entre datasets y evaluar impacto de cambios de calidad en cadena de transformación.
+
+<div align="center">
+
+![Dashboard de linaje openmetadata](../figuras/openmetadata-linaje.png)
+
+</div>
+
+- **Alertas de Calidad del Dato**
+
+Sistema de alertas en tiempo real que notifica desviaciones. Integrado con OpenMetadata para propagar eventos de degradación a todos los stakeholders interesados.
+
+<div align="center">
+
+![Dashboard de alertas openmetadata](../figuras/openmetadata-alerta.png)
+
+</div>

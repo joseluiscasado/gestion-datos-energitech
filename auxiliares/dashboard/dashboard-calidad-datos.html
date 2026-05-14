@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Dashboard - Calidad de Datos EnergiTech</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 30px;
+            border-bottom: 3px solid #34495e;
+        }
+        
+        .header h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 13px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+        
+        .kpi-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            background: #ecf0f1;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        .kpi-card {
+            background: white;
+            padding: 24px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            border-left: 4px solid #2980b9;
+            text-align: center;
+        }
+        
+        .kpi-value {
+            font-size: 36px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 12px 0;
+        }
+        
+        .kpi-label {
+            color: #7f8c8d;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 500;
+        }
+        
+        .main-content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 6px;
+            border-left: 4px solid #2980b9;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        
+        td {
+            padding: 13px 12px;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 13px;
+            color: #34495e;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-ok {
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+        
+        .status-warning {
+            background: #fef5e7;
+            color: #d68910;
+        }
+        
+        .status-critical {
+            background: #fadbd8;
+            color: #c0392b;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-top: 20px;
+        }
+        
+        .alert-box {
+            background: #fef5e7;
+            border-left: 4px solid #d68910;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        
+        .alert-critical {
+            background: #fadbd8;
+            border-left-color: #c0392b;
+        }
+        
+        .footer {
+            background: #ecf0f1;
+            padding: 20px 30px;
+            text-align: center;
+            color: #7f8c8d;
+            border-top: 1px solid #bdc3c7;
+            font-size: 12px;
+        }
+        
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .metric-item {
+            background: white;
+            padding: 16px;
+            border-radius: 6px;
+            border-left: 4px solid #2980b9;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dashboard - Calidad de Datos EnergiTech</h1>
+            <p>Sistema de Monitoreo de Calidad de Datos en Tiempo Real</p>
+            <p style="font-size: 12px; margin-top: 12px; opacity: 0.8;">Generado: 2026-05-12 13:19:04 | Actualización: 13:19:04</p>
+        </div>
+        
+        <div class="kpi-section">
+            <div class="kpi-card">
+                <div class="kpi-label">Métricas Hoy</div>
+                <div class="kpi-value">16</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">% Óptimo</div>
+                <div class="kpi-value">99.5%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Datasets</div>
+                <div class="kpi-value">4</div>
+            </div>
+            <div class="kpi-card" style="border-left-color: #c0392b;">
+                <div class="kpi-label">Alertas Abiertas</div>
+                <div class="kpi-value" style="color: #c0392b;">2</div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <!-- SCORECARD DATASETS -->
+            <div class="section full-width">
+                <h2>Estado por Dataset</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dataset</th>
+                            <th>Criticidad</th>
+                            <th>Métricas</th>
+                            <th>Valor Promedio</th>
+                            <th>Óptimo</th>
+                            <th>Aceptable</th>
+                            <th>Crítico</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td><strong>D001</strong></td>
+                            <td>ALTO</td>
+                            <td>4</td>
+                            <td>98.75%</td>
+                            <td>50.0%</td>
+                            <td>50.0%</td>
+                            <td>0.0%</td>
+                            <td>ÓPTIMO</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>D002</strong></td>
+                            <td>ALTO</td>
+                            <td>4</td>
+                            <td>93.78%</td>
+                            <td>0.0%</td>
+                            <td>50.0%</td>
+                            <td>50.0%</td>
+                            <td>CRÍTICO</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>D003</strong></td>
+                            <td>ALTO</td>
+                            <td>4</td>
+                            <td>96.30%</td>
+                            <td>0.0%</td>
+                            <td>75.0%</td>
+                            <td>25.0%</td>
+                            <td>CRÍTICO</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>D004</strong></td>
+                            <td>MEDIO</td>
+                            <td>4</td>
+                            <td>79.28%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>100.0%</td>
+                            <td>CRÍTICO</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- ALERTAS -->
+            <div class="section">
+                <h2>Alertas Abiertas</h2>
+<table><thead><tr><th>Métrica</th><th>Dataset</th><th>Severidad</th><th>Días</th><th>Estado</th></tr></thead><tbody>
+                <tr>
+                    <td>MED-COM-01</td>
+                    <td>D004</td>
+                    <td>CRÍTICO</td>
+                    <td>2 días</td>
+                    <td>ABIERTA</td>
+                </tr>
+
+                <tr>
+                    <td>MED-EXA-02</td>
+                    <td>D002</td>
+                    <td>ALTO</td>
+                    <td>0 días</td>
+                    <td>ABIERTA</td>
+                </tr>
+</tbody></table>
+            </div>
+            
+            <!-- COMPARATIVA -->
+            <div class="section">
+                <h2>Comparativa Semana</h2>
+
+                <div class="metric-row">
+                    <div class="metric-item">
+                        <div class="metric-label">Mejoras</div>
+                        <div class="metric-value" style="color: #27ae60;">0</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Degradaciones</div>
+                        <div class="metric-value" style="color: #c0392b;">0</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Estables</div>
+                        <div class="metric-value" style="color: #2980b9;">16</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Dashboard de Calidad de Datos EnergiTech | Última actualización: 13:19:04 | Sistema de Monitoreo Continuo</p>
+        </div>
+    </div>
+</body>
+</html>
