@@ -27,44 +27,29 @@ El equipo de gobierno del dato ha diseñado una estrategia del dato que incluye 
 
 Este repositorio contiene los siguientes proyectos de gobierno de datos:
 
-### [Proyecto 1: Procesamiento del Dato y Gestión de Requisitos](proyectos/proyecto-1-procesamiento-gestion-requisitos.md)
+- ### [Proyecto 1: Procesamiento del Dato y Gestión de Requisitos](proyectos/proyecto-1-procesamiento-gestion-requisitos.md)
 
 Implementación de un sistema de análisis predictivo basado en inteligencia artificial para la gestión de la demanda energética de EnergiTech. Este proyecto incluye la especificación completa de requisitos de datos, requisitos del proceso de negocio, y requisitos de calidad de datos.
 
-**Archivos:**
-- [proyectos/proyecto-1-procesamiento-gestion-requisitos.md](proyectos/proyecto-1-procesamiento-gestion-requisitos.md) - Documentación completa del proyecto
-
-### [Proyecto 2: Gestión de Metadatos y Ciclo de Vida del Dato](proyectos/proyecto-2-metadatos-ciclo-vida.md)
+- ### [Proyecto 2: Gestión de Metadatos y Ciclo de Vida del Dato](proyectos/proyecto-2-metadatos-ciclo-vida.md)
 
 Creación de un marco integral de metadatos (glosario de términos, catálogo de datos, diccionario de datos) alineado con la norma UNE 0087, y definición del ciclo de vida completo del dato (Ingesta → Transformación → Almacenamiento → Explotación) con políticas de gobernanza y controles de validación. 
 
-**Archivos:**
-- [proyectos/proyecto-2-metadatos-ciclo-vida.md](proyectos/proyecto-2-metadatos-ciclo-vida.md) - Documentación completa del proyecto
-
-### [Proyecto 3: Gestión de Datos Maestros y Arquitectura y Diseño de Datos](proyectos/proyecto-3-datos-maestros-arquitectura.md)
+- ### [Proyecto 3: Gestión de Datos Maestros y Arquitectura y Diseño de Datos](proyectos/proyecto-3-datos-maestros-arquitectura.md)
 
 Diseño e implementación de un repositorio centralizado de datos maestros (Master Data Management - MDM) para resolver el problema de silos de datos y duplicación de registros de clientes. Este proyecto incluye el modelo de datos maestros para la entidad Cliente, arquitectura de integración para sincronización entre sistemas, y políticas de gobernanza para garantizar la consistencia de datos.
 
-**Archivos:**
-- [proyectos/proyecto-3-datos-maestros-arquitectura.md](proyectos/proyecto-3-datos-maestros-arquitectura.md) - Documentación completa del proyecto
 
-### [Proyecto 4: Medición de la Calidad del Dato](proyectos/proyecto-4-calidad-del-dato.md)
+- ### [Proyecto 4: Medición de la Calidad del Dato](proyectos/proyecto-4-calidad-del-dato.md)
 
 Definición de un modelo de calidad del dato alineado con la norma UNE 0081, con selección y justificación de al menos tres características de calidad (Completitud, Exactitud, Actualidad, Consistencia o Unicidad), métodos de medición con fórmulas, procedimientos y umbrales acordes al apetito de riesgo de EnergiTech.
 
-**Archivos:**
-- [proyectos/proyecto-4-calidad-del-dato.md](proyectos/proyecto-4-calidad-del-dato.md) - Documentación completa del proyecto
 
-### [Proyecto 5: Control y Monitorización de Calidad del Dato](proyectos/proyecto-5-control-monitorizacion-calidad.md)
+- ### [Proyecto 5: Control y Monitorización de Calidad del Dato](proyectos/proyecto-5-control-monitorizacion-calidad.md)
 
 Establecimiento de un entorno operativo de monitorización continua de la calidad del dato. Este proyecto implementa procedimientos estandarizados de medición para cada característica de calidad definida anteriormente, crea un cuadro de mandos integral para visualizar el estado de calidad en tiempo real, e integra herramientas como OpenMetadata para enriquecer el catálogo de datos con métricas de calidad y linaje.
 
-**Archivos:**
-- [proyectos/proyecto-5-control-monitorizacion-calidad.md](proyectos/proyecto-5-control-monitorizacion-calidad.md) - Documentación completa del proyecto
 
-### [Proyecto 6: Evaluación de Madurez Organizacional (Sesión 14)](proyectos/proyecto-6-evaluacion-madurez.md)
+- ### [Proyecto 6: Evaluación de Madurez Organizacional](proyectos/proyecto-6-evaluacion-madurez.md)
 
 Evaluación del nivel de madurez organizacional que EnergiTech ha alcanzado en su iniciativa de gobierno de datos, utilizando como marco de referencia la especificación **UNE 0080**. Incluye un análisis exhaustivo exploratorio de evidencias en diseño, implantación y ejecución de procesos de gobierno, gestión y calidad del dato, derivando el nivel de madurez alcanzado, y propone un plan de mejora.
-
-**Archivos:**
-- [proyectos/proyecto-6-evaluacion-madurez.md](proyectos/proyecto-6-evaluacion-madurez.md) - Documentación completa del proyecto
