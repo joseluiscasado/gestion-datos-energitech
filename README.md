@@ -2,6 +2,16 @@
 
 Repositorio para versionado y desarrollo del proyecto de gestión de datos de la empresa EnergiTech.
 
+## Información Académica
+
+| Aspecto | Detalles |
+|---------|----------|
+| **Asignatura** | Gobierno y Calidad del Dato (Práctica Transversal) |
+| **Programa** | Master en Big Data y Computación en la Nube |
+| **Universidad** | Universidad de Castilla-La Mancha (UCLM) |
+| **Autor** | José Luis Casado Valero |
+| **Período** | Mayo 2026 |
+
 ## Descripción del Proyecto
 
 ### Contexto
