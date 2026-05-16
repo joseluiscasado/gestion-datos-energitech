@@ -50,6 +50,6 @@ Definición de un modelo de calidad del dato alineado con la norma UNE 0081, con
 Establecimiento de un entorno operativo de monitorización continua de la calidad del dato. Este proyecto implementa procedimientos estandarizados de medición para cada característica de calidad definida anteriormente, crea un cuadro de mandos integral para visualizar el estado de calidad en tiempo real, e integra herramientas como OpenMetadata para enriquecer el catálogo de datos con métricas de calidad y linaje.
 
 
-- ### [Proyecto 6: Evaluación de Madurez Organizacional](proyectos/proyecto-6-evaluacion-madurez.md)
+- ### [Proyecto 6: Evaluación de Madurez Organizacional](proyectos/proyecto-6-evaluacion-madurez-MAMD.md)
 
-Evaluación del nivel de madurez organizacional que EnergiTech ha alcanzado en su iniciativa de gobierno de datos, utilizando como marco de referencia la especificación **UNE 0080**. Incluye un análisis exhaustivo exploratorio de evidencias en diseño, implantación y ejecución de procesos de gobierno, gestión y calidad del dato, derivando el nivel de madurez alcanzado, y propone un plan de mejora.
+Evaluación del nivel de madurez organizacional que EnergiTech ha alcanzado en su iniciativa de gobierno de datos, utilizando como marco de referencia el **Modelo Alarcos de Madurez de Datos (MAMD)** basado en UNE 0077, UNE 0078, UNE 0079 e ISO/IEC 8000-62. Incluye un análisis de evaluación de los procesos organizados en 5 niveles de madurez, identificación de brechas, plan de mejora estructurado para alcanzar NM3 (Establecido).
